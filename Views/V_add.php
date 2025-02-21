@@ -1,3 +1,27 @@
+<?php
+include_once '../Controller/crud_motor.php';
+
+$barangController = new BarangController();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nama_motor = $_POST['nama_motor'];
+    $jumlah_motor = $_POST['jumlah_motor'];
+    $harga = $_POST['harga'];
+    $tanggal_masuk = $_POST['tanggal_masuk']; 
+    $id_supplier = $_POST['id_supplier'];
+
+    if (empty($nama_motor) || empty($jumlah_motor) || empty($harga) || empty($tanggal_masuk) || empty($tanggal_masuk) || empty($id_supplier)) {
+        echo "Semua kolom harus diisi.";
+        exit;
+    }
+
+    $barangController->create($nama_motor, $jumlah_motor, $harga, $tanggal_masuk, $id_supplier);
+
+    header("Location: tampil.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
