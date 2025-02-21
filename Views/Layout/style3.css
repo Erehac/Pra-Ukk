@@ -1,0 +1,91 @@
+/* Reset semua pengaturan dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Styling untuk Body */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column; 
+    min-height: 100vh;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #333;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+}
+
+.navbar ul li {
+    padding: 10px 20px;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect */
+.navbar ul li a:hover {
+    color: #6c63ff;
+}
+
+/* Konten utama */
+.content {
+    margin-top: 80px; /* Memberikan ruang untuk navbar yang fix di atas */
+    padding: 50px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+/* Styling untuk Username */
+.content h1 strong {
+    color: #6c63ff;
+    font-weight: bold;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none; /* Menyembunyikan menu pada layar kecil */
+    }
+
+    .navbar .menu-toggle {
+        display: block;
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .navbar.active ul {
+        display: block;
+    }
+}

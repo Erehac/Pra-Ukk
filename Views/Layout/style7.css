@@ -1,0 +1,136 @@
+/* Reset beberapa pengaturan dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Desain body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #6c63ff, #00bcd4); /* Gradien latar belakang */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    flex-direction: column;
+}
+
+/* Form styling */
+form {
+    background-color: rgba(255, 255, 255, 0.9); /* Transparan sedikit */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Animasi untuk form */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styling header */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Styling label */
+label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Styling input field */
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f8f8f8;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+/* Efek focus pada input */
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: #6c63ff;
+    background-color: #e6e6e6;
+    outline: none;
+}
+
+/* Styling untuk tombol simpan akun */
+input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Efek hover pada tombol */
+input[type="submit"]:hover {
+    background-color: #5a54e6;
+}
+
+/* Styling untuk tombol kembali */
+button {
+    background-color: #fff;
+    color: #6c63ff;
+    border: none;
+    padding: 12px 25px;
+    margin-top: 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Responsif untuk perangkat kecil */
+@media (max-width: 480px) {
+    form {
+        padding: 20px;
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    input[type="submit"] {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 10px 20px;
+    }
+}
