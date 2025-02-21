@@ -1,27 +1,3 @@
-<?php
-include_once '../Controller/crud_motor.php';
-
-$barangController = new BarangController();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nama_motor = $_POST['nama_motor'];
-    $jumlah_motor = $_POST['jumlah_motor'];
-    $harga = $_POST['harga'];
-    $tanggal_masuk = $_POST['tanggal_masuk']; 
-    $id_supplier = $_POST['id_supplier'];
-
-    if (empty($nama_motor) || empty($jumlah_motor) || empty($harga) || empty($tanggal_masuk) || empty($tanggal_masuk) || empty($id_supplier)) {
-        echo "Semua kolom harus diisi.";
-        exit;
-    }
-
-    $barangController->create($nama_motor, $jumlah_motor, $harga, $tanggal_masuk, $id_supplier);
-
-    header("Location: tampil.php");
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         button {
-            background-color:rgb(8, 159, 48);
+            background-color: rgb(8, 159, 48);
             color: white;
             cursor: pointer;
             font-size: 16px;
@@ -79,6 +55,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         button:hover {
             background-color: #45a049;
             border-color: #45a049; /* Border color change on hover */
+        }
+
+        /* Tombol Batal */
+        .btn-batal {
+            background-color: #dc3545; /* Warna merah */
+            color: white;
+            border: 2px solid #c82333; /* Border yang sedikit lebih gelap */
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 12px;
+            text-align: center;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .btn-batal:hover {
+            background-color: #c82333; /* Warna merah gelap saat hover */
+            border-color: #bd2130; /* Border merah gelap saat hover */
         }
 
         /* Media Queries for Responsiveness */
@@ -126,13 +123,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="number" id="harga" name="harga" required><br>
 
         <label for="id_supplierr">ID SUPPPLIER</label>
-        <input type="number" id="id_supplier" name="id_supplier" required><br>
+        <select name="id_supplier">
+            <option>-----</option>
+        <?php
+            include_once "../Config/Koneksi.php"; 
+
+            $koneksi = new koneksi(); 
+            $conn = $koneksi->getConnection();
+
+            $sql = "SELECT * FROM tb_supplier";
+            $result = $conn->query($sql);
+
+            while ($row = $result->fetch_assoc()) {
+                echo "  <option value=$row[id_supplier]>$row[nama_supplier]</option>";
+            } 
+        ?>
+        </select>
 
         <label for="tanggal_masuk">TANGGAL MASUK</label>
         <input type="date" id="tanggal_masuk" name="tanggal_masuk" required><br>
 
         <button type="submit">Submit</button>
-        <button type="submit"><a href="tampil.php">Batal</a></button>
+        <button type="button" class="btn-batal" onclick="window.location.href='tampil.php';">Batal</button>
     </form>
 </body>
 </html>
