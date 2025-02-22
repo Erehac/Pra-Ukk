@@ -22,7 +22,7 @@ $distribusi = $distribusiController->read();
         <h2>Data Distribusi</h2>
 
         <div class="add-button-container">
-            <a href="V_tambah_distribusi.php" class="btn-add">Tambah Data</a>
+            <a href="V_add_distribusi.php" class="btn-add">Tambah Data</a>
         </div>
 
         <table border="1">
@@ -44,7 +44,7 @@ $distribusi = $distribusiController->read();
                     <?php while ($row = $distribusi->fetch_assoc()): ?>
                         <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= htmlspecialchars($row['nama_barang']); ?></td>
+                            <td><?= htmlspecialchars($row['nama_motor']); ?></td>
                             <td><?= htmlspecialchars($row['jumlah']); ?></td>
                             <td>Rp. <?= number_format($row['harga'], 0, ',', '.'); ?></td>
                             <td><?= htmlspecialchars($row['tujuan']); ?></td>

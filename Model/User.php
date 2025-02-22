@@ -18,13 +18,17 @@ class Login extends koneksi {
     }
 
     public function tambah_akun($username, $password) {
-        $query = "INSERT INTO tb_user (username, password) VALUES ('$username', '$password')";
-
-        $eksekusi = $this->Query_Perintah($query);
-        
-        echo $query;
-
-        return $eksekusi;
+        $query_check = "SELECT * FROM tb_user WHERE username = '$username'";
+        $result = $this->Query_Tampil($query_check);
+    
+        if ($result) {
+            return false;
+        } else {
+            $query = "INSERT INTO tb_user (username, password) VALUES ('$username', '$password')";
+            $eksekusi = $this->Query_Perintah($query);
+            return $eksekusi;
+        }
     }
+    
 }
 ?>

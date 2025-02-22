@@ -5,7 +5,7 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
         $username = $_POST['username'];
-        $password = sha1($_POST['password']);
+        $password = $_POST['password'];
         
         $aksi = $user->login($username, $password);
 
@@ -39,20 +39,21 @@
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['tambah_akun'])) {
         $username = $_POST['username'];
-        $password = sha1($_POST['password']);
+        $password = $_POST['password']; 
+    
         $aksi = $user->tambah_akun($username, $password);
-
+    
         if ($aksi) {
             ?>
             <script type="text/javascript">
                 alert('Akun berhasil ditambahkan');
                 setTimeout("location.href='../Views/V_login.php'", 1000);
             </script>
-            <?php    
+            <?php
         } else {
             ?>
             <script type="text/javascript">
-                alert('Akun gagal ditambahkan');
+                alert('Username sudah terdaftar, silakan pilih username lain.');
                 setTimeout("location.href='../Views/V_registrasi.php'", 1000);
             </script>
             <?php     

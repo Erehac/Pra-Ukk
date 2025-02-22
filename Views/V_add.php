@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="harga">HARGA</label>
         <input type="number" id="harga" name="harga" required><br>
 
-        <label for="id_supplierr">ID SUPPPLIER</label>
+        <label for="id_supplierr">NAMA SUPPPLIER</label>
         <select name="id_supplier">
             <option>-----</option>
         <?php

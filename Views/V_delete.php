@@ -137,7 +137,7 @@ if (isset($_POST['confirm_delete'])) {
 
 <div class="container">
     <h1>Konfirmasi Hapus</h1>
-    <p>Apakah Anda yakin ingin menghapus data <strong><?= $distribusi['nama_barang'] ?></strong>?</p>
+    <p>Apakah Anda yakin ingin menghapus data <strong><?= $distribusi['nama_motor'] ?></strong>?</p>
     <div class="button-group">
         <form method="POST" action="">
             <input type="hidden" name="id" value="<?= $id ?>" />

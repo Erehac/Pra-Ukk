@@ -56,8 +56,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="tanggal_masuk">TANGGAL MASUK</label>
         <input type="Date" id="tanggal_masuk" name="tanggal_masuk" value="<?= htmlspecialchars($barang['tanggal_masuk']) ?>" required><br>
         
-        <label for="id_supplier">ID SUPPLIER</label>
-        <input type="number" id="id_supplier" name="id_supplier" value="<?= htmlspecialchars($barang['id_supplier']) ?>" required><br>
+        <label for="id_supplierr">NAMA SUPPPLIER</label>
+        <select name="id_supplier">
+            <option>-----</option>
+        <?php
+            include_once "../Config/Koneksi.php"; 
+
+            $koneksi = new koneksi(); 
+            $conn = $koneksi->getConnection();
+
+            $sql = "SELECT * FROM tb_supplier";
+            $result = $conn->query($sql);
+
+            while ($row = $result->fetch_assoc()) {
+                echo "  <option value=$row[id_supplier]>$row[nama_supplier]</option>";
+            } 
+        ?>
+        </select>
+        <br>
+        <br>
 
         <button type="submit">Update</button>
     </form>
