@@ -52,6 +52,6 @@
         <li><a href="tampil.php">Data Motor</a></li>
         <li><a href="V_supplier.php">Data Supplier</a></li>
         <li><a href="V_distribusi.php">Distribusi</a></li>
-        <li><a href="../Views/V_login.php">Logout</a></li>
+        <li><a href="../Controller/AuthController.php?aksi=logout">Logout</a></li>
     </ul>
 </div>
