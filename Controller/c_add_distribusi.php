@@ -40,8 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             echo "Error updating stock: " . $conn->error;
         }
+        ?>
+        <?php
     } else {
-        echo "Jumlah barang yang diminta melebihi stok yang tersedia!";
+       ?>
+            <script type="text/javascript">
+                alert('Jumlah barang yang diminta melebihi stok yang tersedia!');
+                setTimeout("location.href='../Views/V_add_distribusi.php'", 1000);
+            </script>
+        <?php
         exit();
     }
 }
