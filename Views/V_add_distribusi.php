@@ -69,7 +69,7 @@ if ($row_enum) {
         </select><br>
 
         <button type="submit">Submit</button>
-        <button type="button" onclick="window.location.href='tampil.php';">Batal</button>
+        <button type="button" onclick="window.location.href='V_distribusi.php';">Batal</button>
 
     </form>
 </body>

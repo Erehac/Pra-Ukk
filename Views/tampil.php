@@ -18,7 +18,7 @@ $result = $barang->read();
     <?php include 'navbar.php'; ?>
     <div class="container">
         <div class="header">
-            <h2>Daftar Motor dan Distributor</h2>
+            <h2>Daftar Motor dan Supplier</h2>
             <a href="V_add.php" class="btn-add">Tambah Data</a>
         </div>
         <table class="motor-table">
