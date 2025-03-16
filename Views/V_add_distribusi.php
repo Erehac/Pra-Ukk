@@ -3,16 +3,6 @@ include_once "../Config/Koneksi.php";
 
 $koneksi = new Koneksi();
 $conn = $koneksi->getConnection();
-
-$sql_enum = "SHOW COLUMNS FROM tb_distribusi LIKE 'status'";
-$result_enum = $conn->query($sql_enum);  
-$row_enum = $result_enum->fetch_assoc(); 
-
-$enum_values = null;
-if ($row_enum) {
-    preg_match_all("/'([^']+)'/", $row_enum['Type'], $matches);
-    $enum_values = $matches[1]; 
-}
 ?>
 
 <!DOCTYPE html>
@@ -47,26 +37,11 @@ if ($row_enum) {
         <label for="jumlah">Jumlah</label>
         <input type="number" id="jumlah" name="jumlah" required><br>
 
-        <label for="harga">Harga</label>
-        <input type="number" id="harga" name="harga" required><br>
-
         <label for="tujuan">Tujuan</label>
         <input type="text" id="tujuan" name="tujuan" required><br>
 
         <label for="tanggal_kirim">Tanggal Kirim</label>
         <input type="date" id="tanggal_kirim" name="tanggal_kirim" required><br>
-
-        <label for="status">Status</label>
-        <select name="status" id="status" required>
-        <option>-----</option>
-            <?php
-            if ($enum_values) {
-                foreach ($enum_values as $value) {
-                    echo "<option value='$value'>$value</option>";
-                }
-            }
-            ?>
-        </select><br>
 
         <button type="submit">Submit</button>
         <button type="button" onclick="window.location.href='V_distribusi.php';">Batal</button>

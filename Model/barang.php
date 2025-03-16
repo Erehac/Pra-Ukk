@@ -9,13 +9,13 @@ class Barang {
         $this->conn = $db->getConnection();
     }
 
-    public function create($nama_motor, $jumlah_motor, $harga, $tanggal_masuk, $id_supplier) {
-        if (empty($nama_motor) || empty($jumlah_motor) || empty($harga) || empty($tanggal_masuk) || empty($id_supplier)) {
+    public function create($nama_motor, $jumlah_motor, $tanggal_masuk, $id_supplier) {
+        if (empty($nama_motor) || empty($jumlah_motor) || empty($tanggal_masuk) || empty($id_supplier)) {
             die('Semua kolom harus diisi.');
         }
         
-        $sql = "INSERT INTO tb_barang (nama_motor, jumlah_motor, harga, tanggal_masuk, id_supplier) 
-                VALUES ('$nama_motor', '$jumlah_motor', '$harga', '$tanggal_masuk', '$id_supplier')";
+        $sql = "INSERT INTO tb_barang (nama_motor, jumlah_motor, tanggal_masuk, id_supplier) 
+                VALUES ('$nama_motor', '$jumlah_motor', '$tanggal_masuk', '$id_supplier')";
 
         if ($this->conn->query($sql)) {
             return true;
@@ -34,9 +34,9 @@ class Barang {
         return $this->conn->query($sql)->fetch_assoc();
     }
 
-    public function update($id, $nama_motor, $jumlah_motor, $harga, $tanggal_masuk, $id_supplier) {
+    public function update($id, $nama_motor, $jumlah_motor,$tanggal_masuk, $id_supplier) {
         $sql = "UPDATE tb_barang 
-                SET nama_motor = '$nama_motor', jumlah_motor = '$jumlah_motor', harga = '$harga', 
+                SET nama_motor = '$nama_motor', jumlah_motor = '$jumlah_motor', 
                     tanggal_masuk = '$tanggal_masuk', id_supplier = '$id_supplier'
                 WHERE id = $id";
         
