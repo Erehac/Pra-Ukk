@@ -19,7 +19,9 @@ class Distribusi {
                   VALUES ('$nama_motor', $jumlah, '$tujuan', '$tanggal_kirim')";
 
         if ($this->conn->query($query)) {
-            return true;
+            $today = date('Y-m-d');
+            $this->conn->query("INSERT INTO tb_history (nama_motor, jumlah, tujuan, tanggal, aksi) 
+                          VALUES ('$nama_motor', $jumlah, '$tujuan', '$today', 'Create')");
         } else {
             die('Error executing query: ' . $this->conn->error);
         }
@@ -39,15 +41,22 @@ class Distribusi {
         $query = "UPDATE $this->table SET tujuan = '$tujuan', tanggal_kirim = '$tanggal_kirim' WHERE id_distribusi = $id_distribusi";
 
         if ($this->conn->query($query)) {
-            return true;
+            $today = date('Y-m-d');
+            $this->conn->query("INSERT INTO tb_history (tujuan, tanggal, aksi) 
+                          VALUES ('$tujuan', '$today', 'Update')");
         } else {
             die('Error executing query: ' . $this->conn->error);
         }
     }
 
-    public function delete($id_distribusi) {
-        $query = "DELETE FROM $this->table WHERE id_distribusi = $id_distribusi";
+    public function delete($id) {
+        $query = "DELETE FROM $this->table WHERE id_distribusi = $id";
         return $this->conn->query($query);
+        // Setelah delete distribusi, catat ke history
+        $date_now = date('Y-m-d');
+        $conn->query("INSERT INTO tb_history (nama_motor, jumlah, tujuan, tanggal, aksi) 
+              VALUES ('$nama_motor', $jumlah, '-', '$date_now', 'Delete')");
+
     }
 }
 ?>

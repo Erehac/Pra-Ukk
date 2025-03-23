@@ -48,7 +48,7 @@ $distribusi = $distribusiController->read();
                             <td><?= htmlspecialchars($row['tanggal_kirim']); ?></td>
                             <td>
                                 <a href="V_edit_distribusi.php?id_distribusi=<?= $row['id_distribusi']?>" class="btn-action">Edit</a>
-                                <a href="V_delete.php?id_distribusi=<?= $row['id_distribusi']?>" class="btn-aksi">Delete</a>
+                                <a href="delete_distribusi.php?id_distribusi=<?= $row['id_distribusi']?>" class="btn-aksi">Delete</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
