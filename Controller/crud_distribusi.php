@@ -8,8 +8,8 @@ class DistribusiController {
         $this->model = new Distribusi();
     }
 
-    public function create($nama_motor, $jumlah, $tujuan, $tanggal_kirim) {
-        return $this->model->create($nama_motor, $jumlah, $tujuan, $tanggal_kirim);
+    public function create($nama_motor, $jumlah, $tujuan, $tanggal_kirim, $id_toko) {
+        return $this->model->create($nama_motor, $jumlah, $tujuan, $tanggal_kirim, $id_toko);
     }
 
     public function read() {

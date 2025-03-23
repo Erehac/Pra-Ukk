@@ -37,8 +37,23 @@ $conn = $koneksi->getConnection();
         <label for="jumlah">Jumlah</label>
         <input type="number" id="jumlah" name="jumlah" required><br>
 
-        <label for="tujuan">Tujuan</label>
-        <input type="text" id="tujuan" name="tujuan" required><br>
+        <label for="id_toko">NAMA DEALER</label>
+        <select name="id_toko">
+            <option>-----</option>
+        <?php
+            include_once "../Config/Koneksi.php"; 
+
+            $koneksi = new koneksi(); 
+            $conn = $koneksi->getConnection();
+
+            $sql = "SELECT * FROM tb_toko";
+            $result = $conn->query($sql);
+
+            while ($row = $result->fetch_assoc()) {
+                echo "  <option value=$row[id_toko]>$row[nama_toko]</option>";
+            } 
+        ?>
+        </select>
 
         <label for="tanggal_kirim">Tanggal Kirim</label>
         <input type="date" id="tanggal_kirim" name="tanggal_kirim" required><br>

@@ -10,10 +10,10 @@ $conn = $koneksi->getConnection();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nama_motor = $_POST['nama_motor']; 
     $jumlah = $_POST['jumlah'];  
-    $tujuan = $_POST['tujuan'];  
+    $id_toko = $_POST['id_toko'];  
     $tanggal_kirim = $_POST['tanggal_kirim']; 
 
-    if (empty($nama_motor) || empty($jumlah) || empty($tujuan) || empty($tanggal_kirim)) {
+    if (empty($nama_motor) || empty($jumlah) || empty($id_toko) || empty($tanggal_kirim)) {
         echo "Semua kolom harus diisi.";
         exit;
     }
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
 
             // Proses distribusi barang (tetap input ke tabel tb_distribusi)
-            $distribusiController->create($nama_motor, $jumlah, $tujuan, $tanggal_kirim);
+            $distribusiController->create($nama_motor, $jumlah, $tanggal_kirim, $id_toko);
 
             // Redirect ke halaman distribusi
             header("Location: ../Views/V_distribusi.php");

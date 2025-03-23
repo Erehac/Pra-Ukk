@@ -50,8 +50,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="jumlah">JUMLAH</label>
         <span id="jumlah"><?= htmlspecialchars($distribusi['jumlah']) ?></span><br><br>
 
-        <label for="tujuan">TUJUAN</label>
-        <input type="text" id="tujuan" name="tujuan" value="<?= htmlspecialchars($distribusi['tujuan']) ?>" required><br>
+        <label for="id_toko">NAMA DEALER</label>
+        <select name="id_toko">
+            <option>-----</option>
+        <?php
+            include_once "../Config/Koneksi.php"; 
+
+            $koneksi = new koneksi(); 
+            $conn = $koneksi->getConnection();
+
+            $sql = "SELECT * FROM tb_toko";
+            $result = $conn->query($sql);
+
+            while ($row = $result->fetch_assoc()) {
+                echo "  <option value=$row[id_toko]>$row[nama_toko]</option>";
+            } 
+        ?>
+        </select><br>
 
         <label for="tanggal_kirim">TANGGAL KIRIM</label>
         <input type="date" id="tanggal_kirim" name="tanggal_kirim" value="<?= htmlspecialchars($distribusi['tanggal_kirim']) ?>" required><br>

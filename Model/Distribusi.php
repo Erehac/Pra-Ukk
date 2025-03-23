@@ -10,25 +10,25 @@ class Distribusi {
         $this->conn = $db->getConnection();
     }
 
-    public function create($nama_motor, $jumlah, $tujuan, $tanggal_kirim,) {
-        if (empty($nama_motor) || empty($jumlah) || empty($tujuan) || empty($tanggal_kirim)) {
+    public function create($nama_motor, $jumlah, $tanggal_kirim, $id_toko) {
+        if (empty($nama_motor) || empty($jumlah) || empty($tanggal_kirim) || empty($id_toko)) {
             die('Semua kolom harus diisi.');
         }
 
-        $query = "INSERT INTO $this->table (nama_motor, jumlah, tujuan, tanggal_kirim) 
-                  VALUES ('$nama_motor', $jumlah, '$tujuan', '$tanggal_kirim')";
+        $query = "INSERT INTO $this->table (nama_motor, jumlah, tanggal_kirim, id_toko) 
+                  VALUES ('$nama_motor', $jumlah, '$tanggal_kirim', '$id_toko')";
 
         if ($this->conn->query($query)) {
             $today = date('Y-m-d');
-            $this->conn->query("INSERT INTO tb_history (nama_motor, jumlah, tujuan, tanggal, aksi) 
-                          VALUES ('$nama_motor', $jumlah, '$tujuan', '$today', 'Create')");
+            $this->conn->query("INSERT INTO tb_history (nama_motor, jumlah, tanggal, aksi) 
+                          VALUES ('$nama_motor', $jumlah, '$today', 'Create')");
         } else {
             die('Error executing query: ' . $this->conn->error);
         }
     }
 
     public function read() {
-        $query = "SELECT * FROM $this->table";
+        $query = "SELECT * FROM tb_distribusi, tb_toko WHERE tb_distribusi.id_toko = tb_toko.id_toko";
         return $this->conn->query($query);
     }
 
@@ -37,13 +37,13 @@ class Distribusi {
         return $this->conn->query($query)->fetch_assoc();
     }
 
-    public function update($id_distribusi, $tujuan, $tanggal_kirim) {
-        $query = "UPDATE $this->table SET tujuan = '$tujuan', tanggal_kirim = '$tanggal_kirim' WHERE id_distribusi = $id_distribusi";
+    public function update($id_distribusi, $tanggal_kirim) {
+        $query = "UPDATE $this->table SET tanggal_kirim = '$tanggal_kirim' WHERE id_distribusi = $id_distribusi";
 
         if ($this->conn->query($query)) {
             $today = date('Y-m-d');
-            $this->conn->query("INSERT INTO tb_history (tujuan, tanggal, aksi) 
-                          VALUES ('$tujuan', '$today', 'Update')");
+            $this->conn->query("INSERT INTO tb_history ( tanggal, aksi) 
+                          VALUES ('$today', 'Update')");
         } else {
             die('Error executing query: ' . $this->conn->error);
         }

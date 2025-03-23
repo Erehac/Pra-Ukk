@@ -31,7 +31,9 @@ $distribusi = $distribusiController->read();
                     <th>No</th>
                     <th>Nama Barang</th>
                     <th>Jumlah</th>
-                    <th>Tujuan</th>
+                    <th>Dealer</th>
+                    <th>No Telpon</th>
+                    <th>Alamat</th>
                     <th>Tanggal Kirim</th>
                     <th>Aksi</th>
                 </tr>
@@ -44,7 +46,9 @@ $distribusi = $distribusiController->read();
                             <td><?= $no++; ?></td>
                             <td><?= htmlspecialchars($row['nama_motor']); ?></td>
                             <td><?= htmlspecialchars($row['jumlah']); ?></td>
-                            <td><?= htmlspecialchars($row['tujuan']); ?></td>
+                            <td><?= htmlspecialchars($row['nama_toko']); ?></td>
+                            <td><?= htmlspecialchars($row['no_telpon']); ?></td>
+                            <td><?= htmlspecialchars($row['alamat']); ?></td>
                             <td><?= htmlspecialchars($row['tanggal_kirim']); ?></td>
                             <td>
                                 <a href="V_edit_distribusi.php?id_distribusi=<?= $row['id_distribusi']?>" class="btn-action">Edit</a>
