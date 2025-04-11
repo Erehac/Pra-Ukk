@@ -18,6 +18,6 @@
         <input type="submit" name="tambah_akun" value="Simpan Akun">
     </form> 
 
-    <button onclick="window.location.href='../Views/V_login.php'">Kembali ke Login</button>
+    <button onclick="window.location.href='../index.php'">Kembali ke Login</button>
 </body>
 </html>

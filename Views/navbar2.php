@@ -80,17 +80,16 @@
 }
 </style>
 
-
  <br>
  <br>
 <div class="navbar" id="navbar">
     <div class="logo">Honda</div>
     <ul>
-        <li><a href="tampil.php">Data Motor</a></li>
-        <li><a href="V_supplier.php">Data Supplier</a></li>
-        <li><a href="V_distribusi.php">Distribusi</a></li>
-        <li><a href="V_toko.php">Toko</a></li>
-        <li><a href="V_data_detail.php">Details</a></li>
+        <li><a href="Views/tampil.php">Data Motor</a></li>
+        <li><a href="Views/V_supplier.php">Data Supplier</a></li>
+        <li><a href="Views/V_distribusi.php">Distribusi</a></li>
+        <li><a href="Views/V_toko.php">Toko</a></li>
+        <li><a href="Views/V_data_detail.php">Details</a></li>
         <li><a href="#" onclick="konfirmasiLogout()">Logout</a></li>
     </ul>
 </div>

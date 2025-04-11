@@ -18,7 +18,7 @@ $result = $supplier->getAllToko();
     <?php include 'navbar.php'; ?>
     <div class="container">
         <div class="header">
-            <h2>Data Supplier</h2>
+            <h2>Data Toko</h2>
         </div>
         <table class="motor-table">
             <thead>
@@ -43,7 +43,7 @@ $result = $supplier->getAllToko();
         </table>
 
         <div class="back-btn-container">
-            <a href="dashboard.php" class="btn-back">Kembali ke Halaman Utama</a>
+            <a href="../dashboard.php" class="btn-back">Kembali ke Halaman Utama</a>
         </div>
     </div>
 

@@ -1,5 +1,8 @@
 <?php
-    include "../Model/User.php";
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    session_start();
+   require_once __DIR__ . '/../Model/User.php';
 
     $user = new Login();
 
@@ -14,14 +17,14 @@
             ?>
             <script type="text/javascript">
                 alert('Anda Berhasil Login');
-                setTimeout("location.href='../Views/dashboard.php'", 1000); 
+                setTimeout("location.href='../dashboard.php'", 1000); 
             </script>
             <?php
         } else {
             ?>
             <script type="text/javascript">
                 alert('Username dan Password salah');
-                setTimeout("location.href='../Views/V_login.php'", 1000);
+                setTimeout("location.href='../index.php'", 1000);
             </script>
             <?php
         }
@@ -32,7 +35,7 @@
         ?>
         <script type="text/javascript">
             alert('Anda telah keluar dari system');
-            setTimeout("location.href='../Views/V_login.php'", 1000);
+            setTimeout("location.href='../index.php'", 1000);
         </script>
         <?php
     }

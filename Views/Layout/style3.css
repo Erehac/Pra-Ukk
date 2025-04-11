@@ -88,4 +88,158 @@ body {
     .navbar.active ul {
         display: block;
     }
+
+    .content {
+        padding: 40px;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+    }
+
+    .dashboard-cards {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+    }
+    
+    .card {
+        background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        padding: 40px 30px;
+        min-width: 250px;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+    
+    .card h2 {
+        font-size: 20px;
+        margin: 20px 0 10px;
+        color: #333;
+    }
+    
+    .card p {
+        font-size: 32px;
+        color: #3498db;
+        font-weight: bold;
+        margin: 0;
+    }
+    
+    .card .icon {
+        font-size: 40px;
+        color: #666;
+        transition: color 0.3s ease;
+    }
+    
+    .card:hover .icon {
+        color: #3498db;
+    }
+    
+    .card-barang {
+        background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    }
+    
+    .card-distribusi {
+        background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    }
+    
+    
+    .dashboard-cards {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+    }
+
+    .dashboard-cards {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+    }
+    
+    .card {
+        background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        padding: 40px 30px;
+        min-width: 250px;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+    
+    .card h2 {
+        font-size: 20px;
+        margin: 20px 0 10px;
+        color: #333;
+    }
+    
+    .card p {
+        font-size: 32px;
+        color: #3498db;
+        font-weight: bold;
+        margin: 0;
+    }
+    
+    .card .icon {
+        font-size: 40px;
+        color: #666;
+        transition: color 0.3s ease;
+    }
+    
+    .card:hover .icon {
+        color: #3498db;
+    }
+    
+    .card-barang {
+        background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    }
+    
+    .card-distribusi {
+        background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    }
+    
+    
+    .card {
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        padding: 30px 50px;
+        min-width: 220px;
+        transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .card h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    
+    .card p {
+        font-size: 28px;
+        color: #3498db;
+        font-weight: bold;
+    }
+    
 }

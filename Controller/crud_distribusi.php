@@ -8,8 +8,8 @@ class DistribusiController {
         $this->model = new Distribusi();
     }
 
-    public function create($nama_motor, $jumlah, $tujuan, $tanggal_kirim, $id_toko) {
-        return $this->model->create($nama_motor, $jumlah, $tujuan, $tanggal_kirim, $id_toko);
+    public function create($nama_motor, $jumlah, $tujuan, $total_harga, $tanggal_kirim, $id_toko) {
+        return $this->model->create($nama_motor, $jumlah, $tujuan, $total_harga, $tanggal_kirim, $id_toko);
     }
 
     public function read() {
@@ -20,8 +20,8 @@ class DistribusiController {
         return $this->model->readOne($id_distribusi);
     }
 
-    public function update($id_distribusi, $tujuan, $tanggal_kirim) {
-        return $this->model->update($id_distribusi, $tujuan, $tanggal_kirim);
+    public function update($id_distribusi, $tanggal_kirim, $id_toko) {
+        return $this->model->update($id_distribusi, $tanggal_kirim, $id_toko);
     }
 
     public function delete($id_distribusi) {

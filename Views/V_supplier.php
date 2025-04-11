@@ -43,7 +43,7 @@ $result = $supplier->getAllSuppliers();
         </table>
 
         <div class="back-btn-container">
-            <a href="dashboard.php" class="btn-back">Kembali ke Halaman Utama</a>
+            <a href="../dashboard.php" class="btn-back">Kembali ke Halaman Utama</a>
         </div>
     </div>
 

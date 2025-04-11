@@ -6,15 +6,16 @@ $barangController = new BarangController();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nama_motor = $_POST['nama_motor'];
     $jumlah_motor = $_POST['jumlah_motor'];
+    $harga = $_POST['harga'];
     $tanggal_masuk = $_POST['tanggal_masuk']; 
     $id_supplier = $_POST['id_supplier'];
 
-    if (empty($nama_motor) || empty($jumlah_motor) || empty($tanggal_masuk) || empty($tanggal_masuk) || empty($id_supplier)) {
+    if (empty($nama_motor) || empty($jumlah_motor) || empty($harga) || empty($tanggal_masuk) || empty($tanggal_masuk) || empty($id_supplier)) {
         echo "Semua kolom harus diisi.";
         exit;
     }
 
-    $barangController->create($nama_motor, $jumlah_motor, $tanggal_masuk, $id_supplier);
+    $barangController->create($nama_motor, $jumlah_motor, $harga, $tanggal_masuk, $id_supplier);
 
     header("Location: tampil.php");
     exit();
@@ -141,6 +142,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <label for="jumlah_motor">JUMLAH MOTOR</label>
         <input type="number" id="jumlah_motor" name="jumlah_motor" required><br>
+
+        <label for="harga">HARGA</label>
+        <input type="number" id="harga" name="harga" required><br>
 
         <label for="id_supplierr">NAMA SUPPPLIER</label>
         <select name="id_supplier">

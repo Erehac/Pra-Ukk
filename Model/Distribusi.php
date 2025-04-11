@@ -10,25 +10,24 @@ class Distribusi {
         $this->conn = $db->getConnection();
     }
 
-    public function create($nama_motor, $jumlah, $tanggal_kirim, $id_toko) {
+    public function create($nama_motor, $jumlah, $tanggal_kirim, $id_toko, $total_harga) {
         if (empty($nama_motor) || empty($jumlah) || empty($tanggal_kirim) || empty($id_toko)) {
             die('Semua kolom harus diisi.');
         }
 
-        $query = "INSERT INTO $this->table (nama_motor, jumlah, tanggal_kirim, id_toko) 
-                  VALUES ('$nama_motor', $jumlah, '$tanggal_kirim', '$id_toko')";
+        $query = "INSERT INTO $this->table (nama_motor, jumlah, tanggal_kirim, id_toko, total_harga) 
+                  VALUES ('$nama_motor', $jumlah, '$tanggal_kirim', '$id_toko', $total_harga)";
 
-        if ($this->conn->query($query)) {
-            $today = date('Y-m-d');
-            $this->conn->query("INSERT INTO tb_history (nama_motor, jumlah, tanggal, aksi) 
-                          VALUES ('$nama_motor', $jumlah, '$today', 'Create')");
+        if ($this->conn->query($query) === TRUE) {
+            return true;
         } else {
             die('Error executing query: ' . $this->conn->error);
         }
     }
 
     public function read() {
-        $query = "SELECT * FROM tb_distribusi, tb_toko WHERE tb_distribusi.id_toko = tb_toko.id_toko";
+        $query = "SELECT * FROM tb_distribusi 
+                  JOIN tb_toko ON tb_distribusi.id_toko = tb_toko.id_toko";
         return $this->conn->query($query);
     }
 
@@ -37,13 +36,13 @@ class Distribusi {
         return $this->conn->query($query)->fetch_assoc();
     }
 
-    public function update($id_distribusi, $tanggal_kirim) {
-        $query = "UPDATE $this->table SET tanggal_kirim = '$tanggal_kirim' WHERE id_distribusi = $id_distribusi";
+    public function update($id_distribusi, $tanggal_kirim, $id_toko) {
+        $query = "UPDATE $this->table 
+                  SET tanggal_kirim = '$tanggal_kirim', id_toko = '$id_toko' 
+                  WHERE id_distribusi = $id_distribusi";
 
-        if ($this->conn->query($query)) {
-            $today = date('Y-m-d');
-            $this->conn->query("INSERT INTO tb_history ( tanggal, aksi) 
-                          VALUES ('$today', 'Update')");
+        if ($this->conn->query($query) === TRUE) {
+            return true;
         } else {
             die('Error executing query: ' . $this->conn->error);
         }
@@ -51,12 +50,12 @@ class Distribusi {
 
     public function delete($id) {
         $query = "DELETE FROM $this->table WHERE id_distribusi = $id";
-        return $this->conn->query($query);
-        // Setelah delete distribusi, catat ke history
-        $date_now = date('Y-m-d');
-        $conn->query("INSERT INTO tb_history (nama_motor, jumlah, tujuan, tanggal, aksi) 
-              VALUES ('$nama_motor', $jumlah, '-', '$date_now', 'Delete')");
-
+        
+        if ($this->conn->query($query) === TRUE) {
+            return true;
+        } else {
+            die('Error executing delete: ' . $this->conn->error);
+        }
     }
 }
 ?>

@@ -1,5 +1,5 @@
 <?php
-include_once '../Model/barang.php';
+include_once(__DIR__ . '/../Model/barang.php');
 
 class BarangController {
     private $barang;
@@ -8,8 +8,8 @@ class BarangController {
         $this->barang = new Barang();
     } 
 
-    public function create($nama_motor, $jumlah_motor, $tanggal_masuk, $id_supplier) {
-        return $this->barang->create($nama_motor, $jumlah_motor, $tanggal_masuk, $id_supplier);
+    public function create($nama_motor, $jumlah_motor, $harga, $tanggal_masuk, $id_supplier) {
+        return $this->barang->create($nama_motor, $jumlah_motor, $harga, $tanggal_masuk, $id_supplier);
     }
 
     public function read() {
@@ -20,8 +20,8 @@ class BarangController {
         return $this->barang->readOne($id);
     }
 
-    public function update($id, $nama_motor, $jumlah_motor, $tanggal_masuk, $id_supplier) {
-        return $this->barang->update($id, $nama_motor, $jumlah_motor, $tanggal_masuk, $id_supplier);
+    public function update($id, $nama_motor, $jumlah_motor, $harga, $tanggal_masuk, $id_supplier) {
+        return $this->barang->update($id, $nama_motor, $jumlah_motor, $harga, $tanggal_masuk, $id_supplier);
     }
 
     public function delete($id) {

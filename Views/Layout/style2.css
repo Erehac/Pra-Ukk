@@ -67,8 +67,8 @@ body {
 }
 
 .motor-table th {
-    background-color: #007bff;
-    color: white;
+    background-color: #ff0000 !important; /* Pakai !important */
+    color: white !important;
     font-weight: bold;
 }
 
@@ -101,7 +101,7 @@ body {
 }
 
 .motor-table .btn-action:hover {
-    background-color: #0056b3;
+    background-color: #ee2727;
 }
 
 .motor-table tfoot td {

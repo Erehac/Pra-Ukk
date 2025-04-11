@@ -18,10 +18,10 @@ if (isset($_GET['id_distribusi'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $tujuan = $_POST['tujuan'];
     $tanggal_kirim = $_POST['tanggal_kirim'];
+    $id_toko = $_POST['id_toko'];
 
-    $distribusiController->update($id_distribusi, $tujuan, $tanggal_kirim);
+    $distribusiController->update($id_distribusi, $tanggal_kirim, $id_toko);
 
     header("Location: V_distribusi.php");
     exit(); 

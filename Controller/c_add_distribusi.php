@@ -18,16 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    // Koneksi ke database untuk cek stok motor
-    $sql_check = "SELECT jumlah_motor FROM tb_barang WHERE nama_motor = '$nama_motor'";
+    // Perbaikan: Ambil juga harga
+    $sql_check = "SELECT jumlah_motor, harga FROM tb_barang WHERE nama_motor = '$nama_motor'";
     $result = $conn->query($sql_check);
     
-    // Jika motor ditemukan di database
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $stok_tersedia = $row['jumlah_motor'];
+        $harga = $row['harga']; // Ambil harga
+        $total_harga = $harga * $jumlah;
 
-        // Cek apakah jumlah yang diminta lebih dari stok yang tersedia
         if ($jumlah > $stok_tersedia) {
             echo "<script type='text/javascript'>
                     alert('Jumlah barang yang diminta melebihi stok yang tersedia!');
@@ -36,12 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
 
-        // Update jumlah stok setelah distribusi
         $new_jumlah_motor = $stok_tersedia - $jumlah;
         $sql_update = "UPDATE tb_barang SET jumlah_motor = $new_jumlah_motor WHERE nama_motor = '$nama_motor'";
 
         if ($conn->query($sql_update) === TRUE) {
-            // Jika jumlah_motor menjadi 0, hapus data motor tersebut
             if ($new_jumlah_motor == 0) {
                 $sql_delete = "DELETE FROM tb_barang WHERE nama_motor = '$nama_motor'";
                 if ($conn->query($sql_delete) !== TRUE) {
@@ -50,10 +48,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             }
 
-            // Proses distribusi barang (tetap input ke tabel tb_distribusi)
-            $distribusiController->create($nama_motor, $jumlah, $tanggal_kirim, $id_toko);
+            // Panggil fungsi create dengan total_harga
+            $distribusiController->create($nama_motor, $jumlah, $tanggal_kirim, $id_toko, $total_harga);
 
-            // Redirect ke halaman distribusi
             header("Location: ../Views/V_distribusi.php");
             exit();
         } else {

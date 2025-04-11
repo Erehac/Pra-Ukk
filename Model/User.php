@@ -1,19 +1,27 @@
 <?php
-SESSION_START(); 
-include "../Config/koneksi.php";
+require_once __DIR__ . '/../Config/Koneksi.php';
 
-class Login extends koneksi {
+class Login extends koneksi{
+    private $db;
 
-    public function Login($username, $password) {
+    public function __construct() {
+        $this->db = new koneksi(); 
+    }
+
+    public function login($username, $password) {
+        $conn = $this->db->getConnection();  
+
+        if (!$conn) {
+            die("Koneksi gagal");
+        }
+
         $query = "SELECT * FROM tb_user WHERE username = '$username' AND password = '$password'";
+        $result = $conn->query($query);
 
-        $eksekusi = $this->Query_Tampil($query);
-
-        if ($eksekusi) {
-            $_SESSION['username'] = $eksekusi['username']; 
-            return true;
+        if ($result->num_rows > 0) {
+            return true;  
         } else {
-            return false;
+            return false;  
         }
     }
 

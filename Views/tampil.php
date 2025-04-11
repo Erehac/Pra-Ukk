@@ -27,9 +27,8 @@ $result = $barang->read();
                     <th>NO</th>
                     <th>NAMA MOTOR</th>
                     <th>JUMLAH MOTOR</th>
+                    <th>HARGA PERMOTOR</th>
                     <th>NAMA SUPPLIER</th>
-                    <th>NO TELPON</th>
-                    <th>ALAMAT</th>
                     <th>TANGGAL MASUK</th>
                     <th>Aksi</th>
                 </tr>
@@ -41,9 +40,8 @@ $result = $barang->read();
                     <td><?= $no++; ?></td>
                     <td><?= htmlspecialchars($barang['nama_motor']); ?></td>
                     <td><?= htmlspecialchars($barang['jumlah_motor']); ?></td>
+                    <td><?= 'Rp ' . number_format($barang['harga'], 0, ',', '.'); ?></td>
                     <td><?= htmlspecialchars($barang['nama_supplier']); ?></td>
-                    <td><?= htmlspecialchars($barang['no_telpon']); ?></td>
-                    <td><?= htmlspecialchars($barang['alamat']); ?></td>
                     <td><?= htmlspecialchars($barang['tanggal_masuk']); ?></td>
                     <td>
                         <a href="V_edit.php?id=<?= $barang["id"]?>" class="btn-action">Edit</a>
@@ -55,7 +53,7 @@ $result = $barang->read();
         </table>
 
         <div class="back-btn-container">
-            <a href="dashboard.php" class="btn-back">Kembali ke Halaman Utama</a>
+            <a href="../dashboard.php" class="btn-back">Kembali ke Halaman Utama</a>
         </div>
     </div>
 

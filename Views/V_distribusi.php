@@ -31,11 +31,10 @@ $distribusi = $distribusiController->read();
                     <th>No</th>
                     <th>Nama Barang</th>
                     <th>Jumlah</th>
+                    <th>Harga</th>
                     <th>Dealer</th>
-                    <th>No Telpon</th>
-                    <th>Alamat</th>
                     <th>Tanggal Kirim</th>
-                    <th>Aksi</th>
+                    <th>Keterangan</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,13 +45,12 @@ $distribusi = $distribusiController->read();
                             <td><?= $no++; ?></td>
                             <td><?= htmlspecialchars($row['nama_motor']); ?></td>
                             <td><?= htmlspecialchars($row['jumlah']); ?></td>
+                            <td><?= 'Rp ' . number_format($row['total_harga'], 0, ',', '.'); ?></td>
                             <td><?= htmlspecialchars($row['nama_toko']); ?></td>
-                            <td><?= htmlspecialchars($row['no_telpon']); ?></td>
-                            <td><?= htmlspecialchars($row['alamat']); ?></td>
                             <td><?= htmlspecialchars($row['tanggal_kirim']); ?></td>
                             <td>
-                                <a href="V_edit_distribusi.php?id_distribusi=<?= $row['id_distribusi']?>" class="btn-action">Edit</a>
-                                <a href="delete_distribusi.php?id_distribusi=<?= $row['id_distribusi']?>" class="btn-aksi">Delete</a>
+                                <a href="V_detail.php?id_distribusi=<?= $row['id_distribusi']?>" class="btn-action">Confirmasi</a>
+                                <a href="delete_distribusi.php?id_distribusi=<?= $row['id_distribusi']?>" class="btn-aksi">Batalkan</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
@@ -64,7 +62,7 @@ $distribusi = $distribusiController->read();
             </tbody>
         </table>
         <div class="back-btn-container">
-            <a href="dashboard.php" class="btn-back">Kembali ke Halaman Utama</a>
+            <a href="../dashboard.php" class="btn-back">Kembali ke Halaman Utama</a>
         </div>
     </div>
 
